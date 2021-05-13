@@ -1,0 +1,14 @@
+.login-box {
+  width: 400px;
+  position: absolute;
+  top: 30%;
+  left: calc(50% - 200px);
+}
+
+.login-branding {
+  padding-bottom: 20px;
+}
+
+.login-box-content {
+  padding: 20px;
+}

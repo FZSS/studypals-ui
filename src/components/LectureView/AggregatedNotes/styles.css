@@ -1,0 +1,4 @@
+.all-notes {
+  min-height: calc(100vh - 70px - 230px);
+  display: flex;
+}

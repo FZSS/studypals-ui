@@ -1,0 +1,25 @@
+.note-input {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  height: 150px;
+  padding: 40px;
+  width: 100vw;
+  background-color: var(--accent-purple);
+}
+
+.sentence-input {
+  margin-left: 30px;
+}
+.sentence-input-text-field {
+  width: 60vw;
+}
+
+.quick-reactions {
+  min-width: 20vw;
+}
+
+.quick-react-button {
+  margin: 3px !important;
+}

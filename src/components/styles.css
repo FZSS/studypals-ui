@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+}
+
+:root {
+  --primary-purple: #957af6;
+  --secondary-blue: #6985e6;
+  --accent-purple: #eaedfd;
+}
+
+.MuiButton-containedPrimary {
+  background-color: var(--secondary-blue) !important;
+}
+
+.MuiCheckbox-colorPrimary.Mui-checked {
+  color: var(--primary-purple) !important;
+}
+
+.MuiSlider-root {
+  color: var(--secondary-blue) !important;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: var(--secondary-blue) !important;
+}
+
+.app-view {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--accent-purple);
+}
