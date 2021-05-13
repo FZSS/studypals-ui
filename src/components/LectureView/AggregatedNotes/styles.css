@@ -1,4 +1,49 @@
 .all-notes {
   min-height: calc(100vh - 70px - 230px);
   display: flex;
+  justify-content: space-between;
+}
+
+.aggregated-events {
+  width: 60vw;
+  margin: 8px;
+  border: 4px dotted var(--accent-purple);
+}
+
+.aggregated-events .MuiTimelineOppositeContent-root {
+  width: 75px;
+  flex: unset;
+  padding-left: 0;
+  padding-top: 4px;
+  padding-right: 5px;
+}
+
+.aggregated-events .MuiTimeline-root {
+  padding-left: 3px;
+}
+
+.aggregated-event-content {
+  padding: 5px 10px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.aggregated-event-content-reacts {
+  align-items: center;
+  display: flex;
+  padding: 0 15px;
+}
+
+.aggregated-event-content-react {
+  border-radius: 30px;
+  border: 1px solid var(--secondary-blue);
+  margin-left: 25px;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+}
+
+.aggregated-event-content-reacts .MuiBadge-badge {
+  right: -2px !important;
+  opacity: 0.9 !important;
 }

@@ -1,0 +1,7 @@
+
+.my-notes {
+  width: 40vw;
+  margin: 8px;
+  margin-left: 0;
+  border: 4px dotted var(--accent-purple)
+}

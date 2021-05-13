@@ -17,7 +17,6 @@ const NoteInput: FunctionComponent = () => {
 
   return (
     <div className="note-input">
-      <QuickReactions />
       <div className="sentence-input">
         <TextField
           className="sentence-input-text-field"
@@ -26,6 +25,7 @@ const NoteInput: FunctionComponent = () => {
           focused={true}
         />
       </div>
+      <QuickReactions />
     </div>
   );
 };

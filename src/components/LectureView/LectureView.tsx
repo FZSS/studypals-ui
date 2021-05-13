@@ -5,6 +5,7 @@ import 'components/LectureView/styles.css';
 import LectureViewHeading from 'components/LectureView/LectureViewHeading';
 import NoteInput from 'components/LectureView/NoteInput/NoteInput';
 import AggregatedNotes from 'components/LectureView/AggregatedNotes/AggregatedNotes';
+import MyNotes from 'components/LectureView/MyNotes/MyNotes';
 
 const LectureView: FunctionComponent = () => {
   return (
@@ -13,6 +14,7 @@ const LectureView: FunctionComponent = () => {
         <LectureViewHeading />
         <div className="all-notes">
           <AggregatedNotes />
+          <MyNotes />
         </div>
         <NoteInput />
       </div>
