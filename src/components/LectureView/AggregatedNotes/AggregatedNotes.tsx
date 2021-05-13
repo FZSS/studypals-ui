@@ -32,6 +32,9 @@ const AggregatedNotes: FunctionComponent = () => {
 
   return (
     <div className="aggregated-events">
+      <Typography align="center" variant="h5" color="primary">
+        All events
+      </Typography>
       <Timeline>
         {events.map((event) => (
           <TimelineItem key={event.timestamp}>
@@ -49,7 +52,7 @@ const AggregatedNotes: FunctionComponent = () => {
                 <div className="aggregated-event-content">
                   <div className="aggregated-event-content-notes">
                     {event.topNotes.map((note, i) => (
-                      <Typography key={i} variant="body2">
+                      <Typography key={i} variant="body2" noWrap>
                         {i + 1}. {note.content}
                       </Typography>
                     ))}

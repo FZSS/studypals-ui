@@ -18,10 +18,23 @@
 }
 
 .quick-reactions {
-  min-width: 20vw;
+  width: 35vw;
   margin-left: 10px;
+  overflow: scroll;
+  height: 100%;
+  padding-left: 20px;
 }
 
 .quick-react-button {
-  margin: 3px !important;
+  margin: 2px !important;
+}
+
+.quick-react-buttons {
+  width: 35vw;
+  overflow: scroll;
+}
+
+.quick-react-button-row {
+  width: 35vw;
+  overflow: scroll;
 }

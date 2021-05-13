@@ -12,8 +12,8 @@ const QuickReactions: FunctionComponent = () => {
       >
         Quick Reactions
       </Typography>
-      <div>
-        <div>
+      <div className="quick-reaction-buttons">
+        <div className="quick-reaction-button-row">
           <Button
             variant="outlined"
             size="medium"
@@ -39,7 +39,7 @@ const QuickReactions: FunctionComponent = () => {
             {'\u2728'}
           </Button>
         </div>
-        <div>
+        <div className="quick-reaction-button-row">
           <Button
             variant="outlined"
             size="medium"
@@ -65,7 +65,7 @@ const QuickReactions: FunctionComponent = () => {
             {'\u2728'}
           </Button>
         </div>
-        <div>
+        <div className="quick-reaction-button-row">
           <Button
             variant="outlined"
             size="medium"
