@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FunctionComponent } from 'react';
 
 import 'components/LectureView/AggregatedNotes/styles.css';
@@ -12,12 +12,15 @@ import {
   TimelineSeparator,
 } from '@material-ui/lab';
 import { Badge, Paper, Typography } from '@material-ui/core';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/store';
-import { getFakeEvents } from 'utils/eventUtils';
 import { calculateTimeElapsed } from 'utils/lectureUtils';
+import { fetchLectureEvents } from 'store/lecture/slice';
+
+const RETRIEVAL_INTERVAL = 10000;
 
 const AggregatedNotes: FunctionComponent = () => {
+  const lectureId = useSelector((state: RootState) => state.login.lectureId);
   const startTime = useSelector(
     (state: RootState) => state.lecture.lectureStartTime
   );
@@ -26,9 +29,15 @@ const AggregatedNotes: FunctionComponent = () => {
     (state: RootState) => state.lecture.aggregatedEvents
   );
 
-  // TODO: call api every 10 seconds
+  const dispatch = useDispatch();
 
-  events = getFakeEvents();
+  useEffect(() => {
+    dispatch(fetchLectureEvents(lectureId));
+    const interval = setInterval(() => {
+      dispatch(fetchLectureEvents(lectureId));
+    }, RETRIEVAL_INTERVAL);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="aggregated-events">
@@ -36,8 +45,8 @@ const AggregatedNotes: FunctionComponent = () => {
         All events
       </Typography>
       <Timeline>
-        {events.map((event) => (
-          <TimelineItem key={event.timestamp}>
+        {events.map((event, i) => (
+          <TimelineItem key={i}>
             <TimelineOppositeContent>
               <Typography variant="body2" color="textSecondary">
                 {calculateTimeElapsed(startTime, event.timestamp)}

@@ -1,13 +1,28 @@
-export interface OnboardingState {
+export interface LectureState {
+  myContents: Array<UserContent>;
   lectureStartTime: number | undefined;
   currentTime: number | undefined;
   aggregatedEvents: Array<AggregateEvent>;
+}
+
+export interface PostContentOptions {
+  type: 'NOTES' | 'REACTION';
+  content: string;
+  lectureId?: string;
+  studentId?: string;
+  timestamp: number;
 }
 
 export interface Note {
   timestamp?: number;
   content: string;
   studentId?: string;
+}
+
+export interface UserContent {
+  type: 'NOTES' | 'REACTION';
+  content: string;
+  timestamp: number;
 }
 
 export interface Reaction {
@@ -21,8 +36,9 @@ export interface AggregateEvent {
   topReactions: Array<Reaction>;
 }
 
-export const initialState: OnboardingState = {
-  lectureStartTime: 1620874302677, // TODO: reset
+export const initialState: LectureState = {
+  myContents: [],
+  lectureStartTime: 1621222510895, // TODO: reset
   currentTime: undefined,
   aggregatedEvents: [],
 };

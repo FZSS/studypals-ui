@@ -76,7 +76,7 @@ export const calculateTimeElapsed = (
   if (hours < 10) {
     hoursFormatted = '0' + `${hours}:`;
   } else {
-    hoursFormatted = `${hours} hours:`;
+    hoursFormatted = `${hours}:`;
   }
 
   return `+${hoursFormatted}${minutesFormatted}${secondsFormatted}`;
