@@ -11,7 +11,7 @@ import {
   TimelineOppositeContent,
   TimelineSeparator,
 } from '@material-ui/lab';
-import { Badge, Paper, Typography } from '@material-ui/core';
+import { Badge, Paper, Typography, CircularProgress } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/store';
 import { calculateTimeElapsed } from 'utils/lectureUtils';
@@ -101,6 +101,13 @@ const AggregatedNotes: FunctionComponent = () => {
           </TimelineItem>
         ))}
       </Timeline>
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        margin: "8px"
+      }}>
+        <CircularProgress/>
+      </div>
     </div>
   );
 };
