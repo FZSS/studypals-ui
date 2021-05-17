@@ -28,11 +28,16 @@ const lectureSlice = createSlice({
     fetchUserContentsFailed(state, action: PayloadAction<string>) {
       state.myContentsPending = false;
     },
-    fetchEventsPending(state, action: PayloadAction) {},
+    fetchEventsPending(state) {
+      state.aggregatedEventsPending = true;
+    },
     fetchEventsFulfilled(state, action: PayloadAction<AggregateEvent[]>) {
       state.aggregatedEvents = action.payload;
+      state.aggregatedEventsPending = false;
     },
-    fetchEventsFailed(state, action: PayloadAction<string>) {},
+    fetchEventsFailed(state, action: PayloadAction<string>) {
+      state.aggregatedEventsPending = false;
+    },
     postContentPending(state) {
       state.postContentPending = true;
     },
@@ -56,6 +61,7 @@ export const {
   postContentPending,
   postContentFulfilled,
   postContentFailed,
+  fetchEventsPending,
   fetchUserContentsFailed,
 } = lectureSlice.actions;
 
@@ -89,8 +95,8 @@ export const getContents = (
 export const fetchLectureEvents = (lectureId?: string): AppThunk => async (
   dispatch
 ) => {
-  // TODO Dispatch pending
   try {
+    dispatch(fetchEventsPending());
     const events = await getEvents(lectureId);
     dispatch(fetchEventsFulfilled(events));
   } catch (error) {

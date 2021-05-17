@@ -11,12 +11,18 @@ import {
   TimelineOppositeContent,
   TimelineSeparator,
 } from '@material-ui/lab';
-import { Badge, Paper, Typography, CircularProgress } from '@material-ui/core';
+import {
+  Badge,
+  Paper,
+  Typography,
+  LinearProgress,
+  CircularProgress,
+} from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/store';
 import { calculateTimeElapsed } from 'utils/lectureUtils';
 import { fetchLectureEvents } from 'store/lecture/slice';
-import { usePrevious } from '../../../utils/usePrevious';
+import { usePrevious } from 'utils/usePrevious';
 
 const RETRIEVAL_INTERVAL = 10000;
 
@@ -26,8 +32,12 @@ const AggregatedNotes: FunctionComponent = () => {
     (state: RootState) => state.lecture.lectureStartTime
   );
 
-  let events = useSelector(
+  const events = useSelector(
     (state: RootState) => state.lecture.aggregatedEvents
+  );
+
+  const pending = useSelector(
+    (state: RootState) => state.lecture.aggregatedEventsPending
   );
 
   const dispatch = useDispatch();
@@ -43,6 +53,7 @@ const AggregatedNotes: FunctionComponent = () => {
   const prevEvents = usePrevious(events);
 
   useEffect(() => {
+    // @ts-ignore
     if (prevEvents && prevEvents.length === events.length) return;
     const eventsDiv = document.getElementById('aggregated-events-div');
     if (eventsDiv) {
@@ -101,13 +112,10 @@ const AggregatedNotes: FunctionComponent = () => {
           </TimelineItem>
         ))}
       </Timeline>
-      <div style={{
-        display: "flex",
-        justifyContent: "center",
-        margin: "8px"
-      }}>
-        <CircularProgress/>
-      </div>
+
+      {pending ? (
+        <CircularProgress size="25px" className="aggregated-events-progress" />
+      ) : null}
     </div>
   );
 };

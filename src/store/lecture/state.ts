@@ -7,6 +7,7 @@ export interface LectureState {
   lectureStartTime: number | undefined;
   currentTime: number | undefined;
   aggregatedEvents: Array<AggregateEvent>;
+  aggregatedEventsPending: boolean;
 }
 
 export const initialState: LectureState = {
@@ -16,6 +17,7 @@ export const initialState: LectureState = {
   lectureStartTime: FAKE_START_TIME, // TODO: reset
   currentTime: undefined,
   aggregatedEvents: [],
+  aggregatedEventsPending: false,
 };
 
 export interface PostContentOptions {
