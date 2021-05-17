@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/store';
 import { calculateTimeElapsed } from 'utils/lectureUtils';
 import { fetchLectureEvents } from 'store/lecture/slice';
+import { usePrevious } from '../../../utils/usePrevious';
 
 const RETRIEVAL_INTERVAL = 10000;
 
@@ -39,8 +40,18 @@ const AggregatedNotes: FunctionComponent = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const prevEvents = usePrevious(events);
+
+  useEffect(() => {
+    if (prevEvents && prevEvents.length === events.length) return;
+    const eventsDiv = document.getElementById('aggregated-events-div');
+    if (eventsDiv) {
+      eventsDiv.scrollTop = eventsDiv.scrollHeight;
+    }
+  }, [events]);
+
   return (
-    <div className="aggregated-events">
+    <div className="aggregated-events" id="aggregated-events-div">
       <Typography align="center" variant="h5" color="primary">
         All events
       </Typography>

@@ -1,9 +1,22 @@
+export const FAKE_START_TIME = 1621222510895;
+
 export interface LectureState {
   myContents: Array<UserContent>;
+  myContentsPending: boolean;
+  postContentPending: boolean;
   lectureStartTime: number | undefined;
   currentTime: number | undefined;
   aggregatedEvents: Array<AggregateEvent>;
 }
+
+export const initialState: LectureState = {
+  postContentPending: false,
+  myContentsPending: false,
+  myContents: [],
+  lectureStartTime: FAKE_START_TIME, // TODO: reset
+  currentTime: undefined,
+  aggregatedEvents: [],
+};
 
 export interface PostContentOptions {
   type: 'NOTES' | 'REACTION';
@@ -35,10 +48,3 @@ export interface AggregateEvent {
   topNotes: Array<Note>;
   topReactions: Array<Reaction>;
 }
-
-export const initialState: LectureState = {
-  myContents: [],
-  lectureStartTime: 1621222510895, // TODO: reset
-  currentTime: undefined,
-  aggregatedEvents: [],
-};

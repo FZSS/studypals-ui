@@ -18,16 +18,30 @@ const lectureSlice = createSlice({
     updateCurrentTime(state, action: PayloadAction<number>) {
       state.currentTime = action.payload;
     },
-    fetchUserContentsPending(state, action: PayloadAction) {},
+    fetchUserContentsPending(state) {
+      state.myContentsPending = true;
+    },
     fetchUserContentsFulfilled(state, action: PayloadAction<UserContent[]>) {
       state.myContents = action.payload;
+      state.myContentsPending = false;
     },
-    fetchUserContentsFailed(state, action: PayloadAction<string>) {},
+    fetchUserContentsFailed(state, action: PayloadAction<string>) {
+      state.myContentsPending = false;
+    },
     fetchEventsPending(state, action: PayloadAction) {},
     fetchEventsFulfilled(state, action: PayloadAction<AggregateEvent[]>) {
       state.aggregatedEvents = action.payload;
     },
     fetchEventsFailed(state, action: PayloadAction<string>) {},
+    postContentPending(state) {
+      state.postContentPending = true;
+    },
+    postContentFulfilled(state) {
+      state.postContentPending = false;
+    },
+    postContentFailed(state) {
+      state.postContentPending = false;
+    },
   },
 });
 
@@ -39,16 +53,22 @@ export const {
   fetchEventsFailed,
   updateCurrentTime,
   fetchUserContentsFulfilled,
+  postContentPending,
+  postContentFulfilled,
+  postContentFailed,
+  fetchUserContentsFailed,
 } = lectureSlice.actions;
 
 export const postContent = (options: PostContentOptions): AppThunk => async (
   dispatch
 ) => {
-  // TODO Dispatch pending
   try {
+    dispatch(postContentPending());
     await postNoteOrComment(options);
+    dispatch(postContentFulfilled());
     dispatch(getContents(options.studentId, options.lectureId));
   } catch (error) {
+    dispatch(postContentFailed());
     // TODO handle error
   }
 };
@@ -60,7 +80,10 @@ export const getContents = (
   try {
     const contents = await fetchUserContents(studentId, lectureId);
     dispatch(fetchUserContentsFulfilled(contents));
-  } catch (error) {}
+  } catch (error) {
+    dispatch(fetchUserContentsFailed(error.message));
+    // TODO handle error
+  }
 };
 
 export const fetchLectureEvents = (lectureId?: string): AppThunk => async (

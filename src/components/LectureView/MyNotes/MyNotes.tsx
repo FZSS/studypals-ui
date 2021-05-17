@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContents } from 'store/lecture/slice';
 import { RootState } from 'store/store';
 import { calculateTimeElapsed } from 'utils/lectureUtils';
+import { emojis } from 'api/studyPals';
 
 const MyNotes: FunctionComponent = () => {
   const studentId = useSelector((state: RootState) => state.login.studentId);
@@ -38,14 +39,21 @@ const MyNotes: FunctionComponent = () => {
         My notes
       </Typography>
       <div>
-        {contents.map((content, i) => (
-          <div key={i} className="my-note">
-            <Typography variant="body2" className="my-note-timestamp">
-              {calculateTimeElapsed(startTime, content.timestamp)}
-            </Typography>
-            <Typography variant="body2">{content.content}</Typography>
-          </div>
-        ))}
+        {contents.map((content, i) => {
+          let text = content.content;
+          if (content.type === 'REACTION') {
+            text = emojis[text];
+          }
+
+          return (
+            <div key={i} className="my-note">
+              <Typography variant="body2" className="my-note-timestamp">
+                {calculateTimeElapsed(startTime, content.timestamp)}
+              </Typography>
+              <Typography variant="body2">{text}</Typography>
+            </div>
+          );
+        })}
       </div>
       <div className="my-note-bottom" />
     </div>

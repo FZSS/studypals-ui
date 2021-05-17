@@ -13,6 +13,10 @@ const QuickReactions: FunctionComponent = () => {
     (state: RootState) => state.lecture.currentTime
   );
 
+  const postContentPending = useSelector(
+    (state: RootState) => state.lecture.postContentPending
+  );
+
   const handleButtonClick = (emoji: string): MouseEventHandler => () => {
     dispatch(
       postContent({
@@ -41,6 +45,7 @@ const QuickReactions: FunctionComponent = () => {
             size="medium"
             color="primary"
             className="quick-react-button"
+            disabled={postContentPending}
             onClick={handleButtonClick('grinning_face_with_big_eyes')}
           >
             😃
@@ -50,6 +55,7 @@ const QuickReactions: FunctionComponent = () => {
             size="medium"
             color="primary"
             className="quick-react-button"
+            disabled={postContentPending}
             onClick={handleButtonClick('grinning_face_with_sweat')}
           >
             😅
@@ -59,6 +65,7 @@ const QuickReactions: FunctionComponent = () => {
             size="medium"
             color="primary"
             className="quick-react-button"
+            disabled={postContentPending}
             onClick={handleButtonClick('face_with_tears_of_joy')}
           >
             😂
@@ -70,6 +77,7 @@ const QuickReactions: FunctionComponent = () => {
             size="medium"
             color="primary"
             className="quick-react-button"
+            disabled={postContentPending}
             onClick={handleButtonClick('squinting_face_with_tongue')}
           >
             😝
@@ -79,6 +87,7 @@ const QuickReactions: FunctionComponent = () => {
             size="medium"
             color="primary"
             className="quick-react-button"
+            disabled={postContentPending}
             onClick={handleButtonClick('thinking_face')}
           >
             🤔
@@ -88,6 +97,7 @@ const QuickReactions: FunctionComponent = () => {
             size="medium"
             color="primary"
             className="quick-react-button"
+            disabled={postContentPending}
             onClick={handleButtonClick('sleepy_face')}
           >
             😴
@@ -99,6 +109,7 @@ const QuickReactions: FunctionComponent = () => {
             size="medium"
             color="primary"
             className="quick-react-button"
+            disabled={postContentPending}
             onClick={handleButtonClick('frowning_face')}
           >
             &#9785;
@@ -108,6 +119,7 @@ const QuickReactions: FunctionComponent = () => {
             size="medium"
             color="primary"
             className="quick-react-button"
+            disabled={postContentPending}
             onClick={handleButtonClick('fearful_face')}
           >
             😨
@@ -117,6 +129,7 @@ const QuickReactions: FunctionComponent = () => {
             size="medium"
             color="primary"
             className="quick-react-button"
+            disabled={postContentPending}
             onClick={handleButtonClick('angry_face')}
           >
             😠

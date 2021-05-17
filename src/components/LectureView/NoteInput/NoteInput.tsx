@@ -1,4 +1,9 @@
-import React, { KeyboardEventHandler, useState } from 'react';
+import React, {
+  KeyboardEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { FunctionComponent } from 'react';
 import 'components/LectureView/NoteInput/styles.css';
 import { Icon, InputAdornment, TextField, Typography } from '@material-ui/core';
@@ -22,6 +27,14 @@ const NoteInput: FunctionComponent = () => {
 
   const [note, setNote] = useState('');
 
+  const postContentPending = useSelector(
+    (state: RootState) => state.lecture.postContentPending
+  );
+
+  useEffect(() => {
+    if (postContentPending == false) setNote('');
+  }, [postContentPending]);
+
   const onNoteChange: StandardInputProps['onChange'] = (event) =>
     setNote(event.target.value);
 
@@ -43,11 +56,12 @@ const NoteInput: FunctionComponent = () => {
     <div className="note-input">
       <div className="sentence-input">
         <TextField
+          disabled={postContentPending}
           className="sentence-input-text-field"
           label="My thoughts..."
           value={note}
           helperText={calculateTimeElapsed(startTime, currentTime)}
-          focused={true}
+          autoFocus={true}
           onChange={onNoteChange}
           onKeyUp={onEnterPressed}
         />

@@ -7,7 +7,7 @@ import {
   UserContent,
 } from 'store/lecture/state';
 
-const emojis: any = {
+export const emojis: any = {
   grinning_face_with_big_eyes: '😃',
   grinning_face_with_sweat: '😅',
   face_with_tears_of_joy: '😂',
@@ -24,7 +24,7 @@ export const fetchUserContents = async (
   lectureId?: string
 ): Promise<UserContent[]> => {
   const res = await axios.get(
-    `https://study-pal-python-functions.azurewebsites.net/api/raw_event?lecture_id=${lectureId}&user_id=${studentId}`
+    `https://study-pal-api-gateway.azure-api.net/api/raw_event?lecture_id=${lectureId}&user_id=${studentId}`
   );
 
   const contents: UserContent[] = [];

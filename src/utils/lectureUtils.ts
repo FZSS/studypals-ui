@@ -1,9 +1,10 @@
+// TODO: replace with real api if any
+import { FAKE_START_TIME } from '../store/lecture/state';
+
 export const getLectureStartTime = (lectureId: string | undefined) => {
   switch (lectureId) {
-    case '123':
-      return 1620872309;
     default:
-      return 1620872309;
+      return FAKE_START_TIME;
   }
 };
 
