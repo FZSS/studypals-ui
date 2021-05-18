@@ -23,6 +23,7 @@ import { RootState } from 'store/store';
 import { calculateTimeElapsed } from 'utils/lectureUtils';
 import { fetchLectureEvents } from 'store/lecture/slice';
 import { usePrevious } from 'utils/usePrevious';
+import { mapStudentIdToName } from '../../../utils/idUtils';
 
 const RETRIEVAL_INTERVAL = 10000;
 
@@ -82,11 +83,14 @@ const AggregatedNotes: FunctionComponent = () => {
               <Paper elevation={2}>
                 <div className="aggregated-event-content">
                   <div className="aggregated-event-content-notes">
-                    {event.topNotes.map((note, i) => (
-                      <Typography key={i} variant="body2" noWrap>
-                        {i + 1}. {note.content}
-                      </Typography>
-                    ))}
+                    {event.topNotes.map((note, i) => {
+                      const name = mapStudentIdToName(note.studentId + '');
+                      return (
+                        <Typography key={i} variant="body2">
+                          {i + 1}. {`(${name}) ${note.content}`}
+                        </Typography>
+                      );
+                    })}
                   </div>
                   <div className="aggregated-event-content-reacts">
                     {event.topReactions.map((react, i) => (

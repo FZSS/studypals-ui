@@ -9,13 +9,13 @@ import {
 
 export const emojis: any = {
   grinning_face_with_big_eyes: '😃',
-  grinning_face_with_sweat: '😅',
+  grinning_face_with_sweat: '🆒', // cool
   face_with_tears_of_joy: '😂',
   squinting_face_with_tongue: '😝',
   thinking_face: '🤔',
-  sleepy_face: '😴',
-  frowning_face: '☹️',
-  fearful_face: '😨',
+  sleepy_face: '🤩', // important
+  frowning_face: '🔥️',
+  fearful_face: '💡', // light
   angry_face: '😠',
 };
 
@@ -101,6 +101,7 @@ export const getEvents = async (id?: string): Promise<AggregateEvent[]> => {
       }
     }
 
+    if (topReactions.length === 0 && topNotes.length === 0) return;
     events.push({
       timestamp: time,
       topReactions: topReactions,

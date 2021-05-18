@@ -56,9 +56,9 @@ const QuickReactions: FunctionComponent = () => {
             color="primary"
             className="quick-react-button"
             disabled={postContentPending}
-            onClick={handleButtonClick('grinning_face_with_sweat')}
+            onClick={handleButtonClick('face_with_tears_of_joy')}
           >
-            😅
+            😂
           </Button>
           <Button
             variant="outlined"
@@ -66,9 +66,9 @@ const QuickReactions: FunctionComponent = () => {
             color="primary"
             className="quick-react-button"
             disabled={postContentPending}
-            onClick={handleButtonClick('face_with_tears_of_joy')}
+            onClick={handleButtonClick('sleepy_face')}
           >
-            😂
+            🤩
           </Button>
         </div>
         <div className="quick-reaction-button-row">
@@ -98,9 +98,9 @@ const QuickReactions: FunctionComponent = () => {
             color="primary"
             className="quick-react-button"
             disabled={postContentPending}
-            onClick={handleButtonClick('sleepy_face')}
+            onClick={handleButtonClick('angry_face')}
           >
-            😴
+            😠
           </Button>
         </div>
         <div className="quick-reaction-button-row">
@@ -112,7 +112,7 @@ const QuickReactions: FunctionComponent = () => {
             disabled={postContentPending}
             onClick={handleButtonClick('frowning_face')}
           >
-            &#9785;
+            🔥
           </Button>
           <Button
             variant="outlined"
@@ -122,7 +122,7 @@ const QuickReactions: FunctionComponent = () => {
             disabled={postContentPending}
             onClick={handleButtonClick('fearful_face')}
           >
-            😨
+            💡
           </Button>
           <Button
             variant="outlined"
@@ -130,9 +130,9 @@ const QuickReactions: FunctionComponent = () => {
             color="primary"
             className="quick-react-button"
             disabled={postContentPending}
-            onClick={handleButtonClick('angry_face')}
+            onClick={handleButtonClick('grinning_face_with_sweat')}
           >
-            😠
+            🆒
           </Button>
         </div>
       </div>
