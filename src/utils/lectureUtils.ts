@@ -4,7 +4,7 @@ import { FAKE_START_TIME } from 'store/lecture/state';
 export const getLectureStartTime = (lectureId: string | undefined) => {
   switch (lectureId) {
     case '5436':
-      return 1621351803000;
+      return 1621351760328;
     default:
       return FAKE_START_TIME;
   }
