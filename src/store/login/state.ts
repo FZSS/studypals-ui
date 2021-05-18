@@ -5,7 +5,7 @@ export interface LoginState {
 }
 
 export const initialState: LoginState = {
-  loggedIn: true, // TODO: reset
+  loggedIn: false, // TODO: reset
   studentId: '12345',
   lectureId: '7',
 };
