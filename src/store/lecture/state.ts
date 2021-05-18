@@ -1,4 +1,4 @@
-export const FAKE_START_TIME = 1621222510895;
+export const FAKE_START_TIME = 1621304043000;
 
 export interface LectureState {
   myContents: Array<UserContent>;
